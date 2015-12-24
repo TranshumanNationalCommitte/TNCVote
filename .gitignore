@@ -13,6 +13,8 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+Web.Debug.Config
+Web.Release.Config
 
 # Windows shortcuts
 *.lnk
