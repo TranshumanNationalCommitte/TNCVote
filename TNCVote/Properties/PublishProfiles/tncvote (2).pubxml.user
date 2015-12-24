@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAN6guPNgCoEKrc0q024OJXAAAAAACAAAAAAAQZgAAAAEAACAAAAC+VmyXrMhgCgNrq6RKCm/O+w5EvZ2/2Pv8JH7N9BIr5AAAAAAOgAAAAAIAACAAAACGEvHUGNB0kF52fAHPb2Gw7fCEfGtNsMnGWehFeBTw54AAAADDbcSqC7lAYmd8USqudJdBz5gWeVhP8M5ZqwKj1pXHkkNSqNS0im8dOa+vPaS3hG6Zlf/22ikA1AcCgompL+cNa6rOr94fv6BmdCwc15MNeK2iih06N5ckW3wW7h7CAKwjICDk9unGUmE8DgG8xyHfDQgo5E9JVH5KtWroan7qOEAAAABpeaBv/WZBWkkH/olkN0mcPTBO7a5ifMCUdH+rH+ZfUtNYpQlkyml1OaO3yZRoAbMHewc5cRpr619+u75CrGg3</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <AzureDBConnectionStrings Include="Data Source=tcp:tncsqlprod.database.windows.net,1433;Initial Catalog=tncvote_db;User Id=tncadm@tncsqlprod;Password=V0t1ng 4 8 G00d F8t8r3!" />
+    <AzureDBConnectionStrings Include="Data Source=tcp:tncsqlprod.database.windows.net,1433;Initial Catalog=tncvote_db;User Id=tncadm@tncsqlprod;Password=V0t1ng 4 8 G00d F8t8r3!" />
+  </ItemGroup>
+</Project>
