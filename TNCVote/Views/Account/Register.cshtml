@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_PageOnlyLayout.cshtml";
 }
 
-<h2>New Member Registration</h2>
+<h2>New Member Registration </h2>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -12,63 +12,138 @@
     <h4>Register as a TNC Member:</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+
+    <div class="form-element multi-field birthday" id="birthday-form-element">
+        <fieldset>
+            <legend><strong id="BirthdayLabel">Required Fields</strong></legend>
+        </fieldset>
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-   
-    <div class="form-group">
-        @Html.LabelFor(m => m.Country, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Country, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.PostalCode, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+            </div>
+        </div> 
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
         </div>
     </div>
     <div class="form-element multi-field birthday" id="birthday-form-element">
         <fieldset>
-            <legend><strong id="BirthdayLabel">Birthday</strong></legend>
-            <label id="month-label" class="month">
-                <span id="BirthMonth"><div class="goog-inline-block goog-flat-menu-button jfk-select" role="listbox" aria-expanded="false" tabindex="0" aria-haspopup="true" aria-activedescendant=":0" title="Birthday" style="-webkit-user-select: none;"><div class="goog-inline-block goog-flat-menu-button-caption" id=":0" role="option" aria-setsize="12" aria-posinset="0">Month</div><div class="goog-inline-block goog-flat-menu-button-dropdown" aria-hidden="true">&nbsp;</div></div><input type="hidden" name="BirthMonth" id="HiddenBirthMonth"></span>
-            </label>
-            <label id="day-label" class="day">
-                <strong>Day</strong>
-                <input type="text" maxlength="2" value="" name="BirthDay" id="BirthDay">
-                <span class="placeholder-text" id="birthday-placeholder" style="display: block;">Day</span>
-            </label>
-            <label id="year-label" class="year">
-                <strong>Year</strong>
-                <input type="text" maxlength="4" value="" name="BirthYear" id="BirthYear">
-                <span class="placeholder-text" id="birthyear-placeholder" style="display: block;">Year</span>
-            </label>
+            <legend><strong id="BirthdayLabel">Additional Demographic and Voter Information</strong></legend>
         </fieldset>
-      
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control" })
+        <div class="form-group">
+            City of Residence:
+            <div class="col-md-10"> 
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.PostalCode, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+        <div class="form-group">
+            County:
+            <div class="col-md-10">
+            </div>
         </div>
-    </div>
- 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        <div class="form-group">
+            Sex:
+            <div class="col-md-10">
+            </div>
         </div>
+        <div class="form-group">
+            Country of Citizenship:
+            <div class="col-md-10">
+            </div>
+        </div>
+        <div class="form-group">
+            Income range:
+            <div class="col-md-10">
+            </div>
+        </div>
+        <div class="form-group">
+            Education:
+            <div class="col-md-10">
+            </div>
+        </div>
+        <div class="form-group">
+            Married:
+            <div class="col-md-10">
+            </div>
+        </div>
+        <div class="form-group">
+            Phone Number:
+            <div class="col-md-10">
+            </div>
+        </div>
+        <div class="form-group">
+            Twitter:
+            <div class="col-md-10">
+            </div>
+        </div>
+        <div class="form-group">
+            Facebook:
+            <div class="col-md-10">
+            </div>
+        </div>
+        <div class="form-group">
+            Blog:
+            <div class="col-md-10">
+            </div>
+        </div>
+        <div class="form-group">
+            Website:
+            <div class="col-md-10">
+            </div>
+        </div>
+        <div class="form-group">
+            Title:
+            <div class="col-md-10">
+            </div>
+        </div>
+        <div class="form-group">
+            Profession:
+            <div class="col-md-10">
+            </div>
+        </div> 
     </div>
+
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />
