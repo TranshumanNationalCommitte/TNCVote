@@ -161,7 +161,19 @@ namespace TNCVote.Controllers
                     LastName = model.LastName,
                     PostalCode = model.PostalCode,
                     CitizenshipCountry = model.Country,
-                   
+                    City = model.City,
+                    County = model.County,
+                    Sex = model.Sex,
+                    IncomeRange = model.IncomeRange,
+                    Education = model.Education,
+                    Married = model.Married,
+                    PhoneNumber = model.PhoneNumber,
+                    Twitter = model.Twitter,
+                    Facebook = model.Facebook,
+                    Blog = model.Blog,
+                    Website = model.Website, 
+                    Title = model.Title,
+                    Profession = model.Profession 
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

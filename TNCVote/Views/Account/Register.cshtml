@@ -67,78 +67,94 @@
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Register" />
+        </div>
+    </div>
+    <br /> 
     <div class="form-element multi-field birthday" id="birthday-form-element">
         <fieldset>
-            <legend><strong id="BirthdayLabel">Additional Demographic and Voter Information</strong></legend>
+            <legend><strong id="BirthdayLabel">Additional Demographic and Voter Information</strong></legend> 
+            <h4>Following fields help with voter demographics and help with certain local or regional political issues etc.  They are not required but help alot in demographic analysis of TNC members.</h4>
         </fieldset>
         <div class="form-group">
-            City of Residence:
+            @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" }) 
             <div class="col-md-10"> 
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            County:
+            @Html.LabelFor(m => m.County, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
+                @Html.TextBoxFor(m => m.County, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            Sex:
+            @Html.LabelFor(m => m.Sex, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Sex, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            Country of Citizenship:
+            @Html.LabelFor(m => m.IncomeRange, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
+                @Html.TextBoxFor(m => m.IncomeRange, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            Income range:
+            @Html.LabelFor(m => m.Education, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Education, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            Education:
+            @Html.LabelFor(m => m.Married, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Married, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            Married:
+            @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            Phone Number:
+            @Html.LabelFor(m => m.Twitter, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Twitter, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            Twitter:
+            @Html.LabelFor(m => m.Facebook, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Facebook, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            Facebook:
+            @Html.LabelFor(m => m.Blog, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Blog, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            Blog:
+            @Html.LabelFor(m => m.Website, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Website, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            Website:
+            @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            Title:
+            @Html.LabelFor(m => m.Profession, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-            </div>
-        </div>
-        <div class="form-group">
-            Profession:
-            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Profession, new { @class = "form-control" })
             </div>
         </div> 
     </div>

@@ -43,6 +43,45 @@ namespace TNCVote.Models
         //public string County { get; set; }
 
 
+        [Display(Name = "City of Residence")]
+        public string City { get; set; }
+
+        [Display(Name = "County of Residence")]
+        public string County { get; set; }
+
+        [Display(Name = "Sex")]
+        public string Sex { get; set; }
+
+        [Display(Name = "Income Range")]
+        public string IncomeRange { get; set; }
+
+        [Display(Name = "Education")]
+        public string Education { get; set; }
+
+        [Display(Name = "Married")]
+        public string Married { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        [Display(Name = "Twitter")]
+        public string Twitter { get; set; }
+
+        [Display(Name = "Facebook")]
+        public string Facebook { get; set; }
+
+        [Display(Name = "Blog")]
+        public string Blog { get; set; }
+
+        [Display(Name = "Website")]
+        public string Website { get; set; }
+
+        [Display(Name = "Title")]
+        public string Title { get; set; }
+
+        [Display(Name = "Profession")]
+        public string Profession { get; set; }
+
 
 
 
