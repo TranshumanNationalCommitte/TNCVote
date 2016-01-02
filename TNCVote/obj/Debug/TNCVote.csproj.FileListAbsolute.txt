@@ -146,3 +146,4 @@ C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.Migrations.cleanup.resources
 C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.csproj.GenerateResource.Cache
 C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.dll
 C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.pdb
+C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Debug\TNCVote.Migrations.AddedFieldstoApplicationUser.resources

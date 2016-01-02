@@ -29,20 +29,11 @@ namespace TNCVote.Models
         [Required]
         [Display(Name = "Country Of Citizenship")]
         public string CitizenshipCountry { get; set; }
-
-        //[Required]
-        //[Display(Name = "City")]
-        //public string City { get; set; }
-
-        //[Required]
-        //[Display(Name = "State")]
-        //public string State { get; set; }
-
-        //[Required]
-        //[Display(Name = "County")]
-        //public string County { get; set; }
-
-
+        
+        [EmailAddress]
+        [Display(Name ="Email Address")]
+        public override string Email { get; set; }
+      
         [Display(Name = "City of Residence")]
         public string City { get; set; }
 
@@ -62,7 +53,7 @@ namespace TNCVote.Models
         public string Married { get; set; }
 
         [Display(Name = "Phone Number")]
-        public string PhoneNumber { get; set; }
+        public override string PhoneNumber { get; set; }
 
         [Display(Name = "Twitter")]
         public string Twitter { get; set; }

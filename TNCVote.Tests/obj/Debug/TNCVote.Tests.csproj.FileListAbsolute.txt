@@ -53,3 +53,7 @@ C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote.Tests\bin\Debug\Microsoft.Owin.H
 C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote.Tests\obj\Debug\TNCVote.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote.Tests\obj\Debug\TNCVote.Tests.dll
 C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote.Tests\obj\Debug\TNCVote.Tests.pdb
+C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote.Tests\bin\Debug\Microsoft.Owin.Security.Google.dll
+C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote.Tests\bin\Debug\Microsoft.Owin.Security.Google.xml
+C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.xml

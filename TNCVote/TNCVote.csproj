@@ -189,6 +189,10 @@
     <Compile Include="Migrations\201512240913165_cleanup.Designer.cs">
       <DependentUpon>201512240913165_cleanup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601021130319_Added Fields to Application User.cs" />
+    <Compile Include="Migrations\201601021130319_Added Fields to Application User.Designer.cs">
+      <DependentUpon>201601021130319_Added Fields to Application User.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -279,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512240913165_cleanup.resx">
       <DependentUpon>201512240913165_cleanup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601021130319_Added Fields to Application User.resx">
+      <DependentUpon>201601021130319_Added Fields to Application User.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

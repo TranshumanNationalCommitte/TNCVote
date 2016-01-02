@@ -72,3 +72,4 @@ C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.csproj.Gener
 C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.Migrations.RequiredFields.resources
 C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.Migrations.DateOfBirth.resources
 C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.Migrations.cleanup.resources
+C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.Migrations.AddedFieldstoApplicationUser.resources

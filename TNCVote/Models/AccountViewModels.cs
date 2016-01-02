@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
+using System.Linq;
 
 namespace TNCVote.Models
 {
@@ -62,8 +64,18 @@ namespace TNCVote.Models
         public bool RememberMe { get; set; }
     }
 
+    class Country
+    {
+        public string ID { get; set; }
+        public string Name { get; set; }
+    }
+
+   
+
     public class RegisterViewModel
     {
+      
+
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }

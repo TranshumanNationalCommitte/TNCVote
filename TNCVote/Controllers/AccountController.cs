@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TNCVote.Models;
+using System.Collections.Generic;
 
 namespace TNCVote.Controllers
 {
@@ -139,7 +140,30 @@ namespace TNCVote.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            SelectList countryList = new SelectList(GetCountries(),"ID","Name", "US");
+              ViewBag.CountryList = countryList;
+      
+            var monthNames = DateTimeFormatInfo.CurrentInfo.MonthNames.Select((Name, ID)=> new { ID = ID, Name = Name } ).ToList();
+            SelectList monthNameList = new SelectList(monthNames, "ID", "Name");
+            ViewBag.monthNameList = monthNameList;
             return View();
+        }
+
+
+       
+
+        IEnumerable<Country> GetCountries()
+        {
+            return CultureInfo.GetCultures(CultureTypes.SpecificCultures)
+                 .Select(x => new Country
+                 {
+                     ID = new RegionInfo(x.LCID).Name,
+                     Name = new RegionInfo(x.LCID).EnglishName
+                 })
+                                 .GroupBy(c => c.ID)
+                                 .Select(c => c.First())
+                                 .OrderBy(x => x.Name);
+
         }
 
         //
@@ -190,7 +214,8 @@ namespace TNCVote.Controllers
                 }
                 AddErrors(result);
             }
-
+            SelectList countryList = new SelectList(GetCountries(), "ID", "Name");
+            ViewBag.CountryList = countryList;
             // If we got this far, something failed, redisplay form
             return View(model);
         }
