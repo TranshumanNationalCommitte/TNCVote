@@ -15,15 +15,20 @@ namespace TNCVote.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Welcome to the TNC Membership Portal.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Welcome to the TNC Membership Portal.  You can contact us the following ways:";
 
+            return View();
+        }
+
+        public ActionResult Success()
+        { 
             return View();
         }
     }

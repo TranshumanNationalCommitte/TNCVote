@@ -140,9 +140,6 @@ C:\git_TNC\TNCVote\TNCVote\bin\Microsoft.Owin.Security.Twitter.xml
 C:\git_TNC\TNCVote\TNCVote\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.csprojResolveAssemblyReference.cache
 C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.Migrations.InitialCreate.resources
-C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.Migrations.RequiredFields.resources
-C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.Migrations.DateOfBirth.resources
-C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.Migrations.cleanup.resources
 C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.csproj.GenerateResource.Cache
 C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.dll
 C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.pdb

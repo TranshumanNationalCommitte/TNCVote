@@ -156,9 +156,7 @@ namespace TNCVote.Controllers
                   new { Name="$50,000-$75000", ID="3"},
                    new { Name="$75000-$10000", ID="4"},
                     new { Name="$100000-$150000",ID="5" },
-                      new { Name=">$1150000",ID="6" }
-
-
+                      new { Name=">$1150000",ID="6" } 
             };
 
             var married = new List<object>()
@@ -180,10 +178,7 @@ namespace TNCVote.Controllers
             ViewBag.MonthNameList = monthNameList;
             return View();
         }
-
-
-       
-
+         
         IEnumerable<Country> GetCountries()
         {
             return CultureInfo.GetCultures(CultureTypes.SpecificCultures)
