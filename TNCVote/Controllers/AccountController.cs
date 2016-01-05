@@ -142,10 +142,42 @@ namespace TNCVote.Controllers
         {
             SelectList countryList = new SelectList(GetCountries(),"ID","Name", "US");
               ViewBag.CountryList = countryList;
-      
+            var genders = new List<object>() {
+                new { Name="Male", ID="M"},
+                 new { Name="Female", ID="F"},
+                  new { Name="Other", ID="O"}
+
+            };
+
+            var incomeRanges = new List<object>()
+            {
+                 new { Name="<$25,000", ID="1"},
+                 new { Name="$25,00-$50,000", ID="1"},
+                  new { Name="$50,000-$75000", ID="3"},
+                   new { Name="$75000-$10000", ID="4"},
+                    new { Name="$100000-$150000",ID="5" },
+                      new { Name=">$1150000",ID="6" }
+
+
+            };
+
+            var married = new List<object>()
+            {
+                 new { Name="Married", ID="M"},
+                 new { Name="Single", ID="S"},
+               };
+
+            SelectList marriedList = new SelectList(married, "ID", "Name");
+            ViewBag.MarriedList = marriedList;
+
+            SelectList incomeRangeList = new SelectList(incomeRanges, "ID", "Name");
+            ViewBag.IncomeRangeList = incomeRangeList;
+            SelectList genderList = new SelectList(genders, "ID", "Name");
+            ViewBag.GenderList = genderList;
             var monthNames = DateTimeFormatInfo.CurrentInfo.MonthNames.Select((Name, ID)=> new { ID = ID, Name = Name } ).ToList();
+       
             SelectList monthNameList = new SelectList(monthNames, "ID", "Name");
-            ViewBag.monthNameList = monthNameList;
+            ViewBag.MonthNameList = monthNameList;
             return View();
         }
 
@@ -179,7 +211,7 @@ namespace TNCVote.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    BirthDate = model.BirthDate,
+                    BirthDate = new DateTime(Convert.ToInt16(model.BirthYear), Convert.ToInt16(model.BirthMonth + 1), Convert.ToInt16(model.BirtDay)).ToShortDateString() ,
                  
                     FirstName = model.FirstName,
                     LastName = model.LastName,

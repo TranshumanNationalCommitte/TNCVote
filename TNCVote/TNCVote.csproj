@@ -173,25 +173,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512240630268_InitialCreate.cs" />
-    <Compile Include="Migrations\201512240630268_InitialCreate.Designer.cs">
-      <DependentUpon>201512240630268_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512240823403_RequiredFields.cs" />
-    <Compile Include="Migrations\201512240823403_RequiredFields.Designer.cs">
-      <DependentUpon>201512240823403_RequiredFields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512240839377_DateOfBirth.cs" />
-    <Compile Include="Migrations\201512240839377_DateOfBirth.Designer.cs">
-      <DependentUpon>201512240839377_DateOfBirth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512240913165_cleanup.cs" />
-    <Compile Include="Migrations\201512240913165_cleanup.Designer.cs">
-      <DependentUpon>201512240913165_cleanup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601021130319_Added Fields to Application User.cs" />
-    <Compile Include="Migrations\201601021130319_Added Fields to Application User.Designer.cs">
-      <DependentUpon>201601021130319_Added Fields to Application User.cs</DependentUpon>
+    <Compile Include="Migrations\201601030619362_InitialCreate.cs" />
+    <Compile Include="Migrations\201601030619362_InitialCreate.Designer.cs">
+      <DependentUpon>201601030619362_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -272,20 +256,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512240630268_InitialCreate.resx">
-      <DependentUpon>201512240630268_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512240823403_RequiredFields.resx">
-      <DependentUpon>201512240823403_RequiredFields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512240839377_DateOfBirth.resx">
-      <DependentUpon>201512240839377_DateOfBirth.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512240913165_cleanup.resx">
-      <DependentUpon>201512240913165_cleanup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601021130319_Added Fields to Application User.resx">
-      <DependentUpon>201601021130319_Added Fields to Application User.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601030619362_InitialCreate.resx">
+      <DependentUpon>201601030619362_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -94,8 +94,17 @@ namespace TNCVote.Models
 
 
         [Required]
-        [Display(Name = "Date Of Birth")]
-        public string BirthDate { get; set; }
+        [Display(Name = "Birth Day")]
+        public string BirtDay { get; set; }
+
+
+        [Required]
+        [Display(Name = "Birth Month")]
+        public string BirthMonth { get; set; }
+
+        [Required]
+        [Display(Name = "Birth Year")]
+        public string BirthYear { get; set; }
 
         [Required]
         [EmailAddress]
