@@ -95,7 +95,7 @@ namespace TNCVote.Models
 
         [Required]
         [Display(Name = "Birth Day")]
-        public string BirtDay { get; set; }
+        public string BirthDay { get; set; }
 
 
         [Required]

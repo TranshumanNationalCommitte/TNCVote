@@ -153,10 +153,10 @@ namespace TNCVote.Controllers
             {
                  new { Name="<$25,000", ID="1"},
                  new { Name="$25,00-$50,000", ID="1"},
-                  new { Name="$50,000-$75000", ID="3"},
-                   new { Name="$75000-$10000", ID="4"},
-                    new { Name="$100000-$150000",ID="5" },
-                      new { Name=">$1150000",ID="6" } 
+                  new { Name="$50,000-$75,000", ID="3"},
+                   new { Name="$75,000-$100,000", ID="4"},
+                    new { Name="$100,000-$150,000",ID="5" },
+                      new { Name=">$150,000",ID="6" } 
             };
 
             var married = new List<object>()
@@ -206,7 +206,7 @@ namespace TNCVote.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    BirthDate = new DateTime(Convert.ToInt16(model.BirthYear), Convert.ToInt16(model.BirthMonth + 1), Convert.ToInt16(model.BirtDay)).ToShortDateString() ,
+                    BirthDate = new DateTime(Convert.ToInt16(model.BirthYear), Convert.ToInt16(model.BirthMonth + 1), Convert.ToInt16(model.BirthDay)).ToShortDateString() ,
                  
                     FirstName = model.FirstName,
                     LastName = model.LastName,
