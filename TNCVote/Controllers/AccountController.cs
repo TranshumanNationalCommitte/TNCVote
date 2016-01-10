@@ -23,7 +23,7 @@ namespace TNCVote.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -35,9 +35,9 @@ namespace TNCVote.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -121,7 +121,7 @@ namespace TNCVote.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -173,7 +173,7 @@ namespace TNCVote.Controllers
             var monthNames = DateTimeFormatInfo.CurrentInfo.MonthNames.Select((Name, ID) => new { ID = ID, Name = Name }).ToList();
 
             SelectList monthNameList = new SelectList(monthNames, "ID", "Name");
-            ViewBag.MonthNameList = monthNameList; 
+            ViewBag.MonthNameList = monthNameList;
         }
 
         //
@@ -184,7 +184,7 @@ namespace TNCVote.Controllers
             CreateSelectData();
             return View();
         }
-         
+
         IEnumerable<Country> GetCountries()
         {
             return CultureInfo.GetCultures(CultureTypes.SpecificCultures)
@@ -197,6 +197,23 @@ namespace TNCVote.Controllers
                                  .Select(c => c.First())
                                  .OrderBy(x => x.Name);
 
+        }
+
+        protected string GetIPAddress()
+        {
+            System.Web.HttpContext context = System.Web.HttpContext.Current;
+            string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (!string.IsNullOrEmpty(ipAddress))
+            {
+                string[] addresses = ipAddress.Split(',');
+                if (addresses.Length != 0)
+                {
+                    return addresses[0];
+                }
+            }
+
+            return context.Request.ServerVariables["REMOTE_ADDR"];
         }
 
         //
@@ -212,8 +229,8 @@ namespace TNCVote.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    BirthDate = new DateTime(Convert.ToInt16(model.BirthYear), Convert.ToInt16(model.BirthMonth + 1), Convert.ToInt16(model.BirthDay)).ToShortDateString() ,
-                 
+                    BirthDate = new DateTime(Convert.ToInt16(model.BirthYear), Convert.ToInt16(model.BirthMonth + 1), Convert.ToInt16(model.BirthDay)).ToShortDateString(),
+                    IPAddress = this.GetIPAddress(),
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     PostalCode = model.PostalCode,
@@ -228,15 +245,15 @@ namespace TNCVote.Controllers
                     Twitter = model.Twitter,
                     Facebook = model.Facebook,
                     Blog = model.Blog,
-                    Website = model.Website, 
+                    Website = model.Website,
                     Title = model.Title,
-                    Profession = model.Profession 
+                    Profession = model.Profession
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

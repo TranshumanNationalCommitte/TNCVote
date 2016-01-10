@@ -73,9 +73,7 @@ namespace TNCVote.Models
         [Display(Name = "Profession")]
         public string Profession { get; set; }
 
-
-
-
+        public string IPAddress { get;  set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
