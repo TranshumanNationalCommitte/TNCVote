@@ -135,13 +135,11 @@ namespace TNCVote.Controllers
             }
         }
 
-        //
-        // GET: /Account/Register
-        [AllowAnonymous]
-        public ActionResult Register()
+        public void CreateSelectData()
         {
-            SelectList countryList = new SelectList(GetCountries(),"ID","Name", "US");
-              ViewBag.CountryList = countryList;
+            SelectList countryList = new SelectList(GetCountries(), "ID", "Name", "US");
+            ViewBag.CountryList = countryList;
+
             var genders = new List<object>() {
                 new { Name="Male", ID="M"},
                  new { Name="Female", ID="F"},
@@ -156,7 +154,7 @@ namespace TNCVote.Controllers
                   new { Name="$50,000-$75,000", ID="3"},
                    new { Name="$75,000-$100,000", ID="4"},
                     new { Name="$100,000-$150,000",ID="5" },
-                      new { Name=">$150,000",ID="6" } 
+                      new { Name=">$150,000",ID="6" }
             };
 
             var married = new List<object>()
@@ -172,10 +170,18 @@ namespace TNCVote.Controllers
             ViewBag.IncomeRangeList = incomeRangeList;
             SelectList genderList = new SelectList(genders, "ID", "Name");
             ViewBag.GenderList = genderList;
-            var monthNames = DateTimeFormatInfo.CurrentInfo.MonthNames.Select((Name, ID)=> new { ID = ID, Name = Name } ).ToList();
-       
+            var monthNames = DateTimeFormatInfo.CurrentInfo.MonthNames.Select((Name, ID) => new { ID = ID, Name = Name }).ToList();
+
             SelectList monthNameList = new SelectList(monthNames, "ID", "Name");
-            ViewBag.MonthNameList = monthNameList;
+            ViewBag.MonthNameList = monthNameList; 
+        }
+
+        //
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            CreateSelectData();
             return View();
         }
          
@@ -241,8 +247,9 @@ namespace TNCVote.Controllers
                 }
                 AddErrors(result);
             }
-            SelectList countryList = new SelectList(GetCountries(), "ID", "Name");
-            ViewBag.CountryList = countryList;
+
+            CreateSelectData();
+
             // If we got this far, something failed, redisplay form
             return View(model);
         }

@@ -139,8 +139,8 @@ C:\git_TNC\TNCVote\TNCVote\bin\Microsoft.Owin.Security.Google.xml
 C:\git_TNC\TNCVote\TNCVote\bin\Microsoft.Owin.Security.Twitter.xml
 C:\git_TNC\TNCVote\TNCVote\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.csprojResolveAssemblyReference.cache
-C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.Migrations.InitialCreate.resources
-C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.csproj.GenerateResource.Cache
 C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.dll
 C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.pdb
 C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Debug\TNCVote.Migrations.AddedFieldstoApplicationUser.resources
+C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.Migrations.initialcreate.resources
+C:\git_TNC\TNCVote\TNCVote\obj\Debug\TNCVote.csproj.GenerateResource.Cache
