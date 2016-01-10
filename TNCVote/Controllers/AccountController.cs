@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TNCVote.Models;
 using System.Collections.Generic;
+using System.Net.Mail;
 
 namespace TNCVote.Controllers
 {
@@ -214,6 +215,25 @@ namespace TNCVote.Controllers
             }
 
             return context.Request.ServerVariables["REMOTE_ADDR"];
+        }
+
+        public void SendConfirmationEmail()
+        {
+            SmtpClient client = new SmtpClient();
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true;
+            client.Timeout = 10000;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("user@gmail.com", "password");
+
+            MailMessage mm = new MailMessage("donotreply@domain.com", "sendtomyemail@domain.co.uk");
+            mm.Subject = "Email Subject";
+            mm.Body = "Email Body";
+
+            client.Send(mm);
+
         }
 
         //
