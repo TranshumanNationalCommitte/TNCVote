@@ -52,22 +52,27 @@ namespace TNCVote.Models
         [Display(Name = "Married")]
         public string Married { get; set; }
 
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]
         [Display(Name = "Phone Number")]
         public override string PhoneNumber { get; set; }
 
+        [RegularExpression("^[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]‌​{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$", ErrorMessage = "You must enter a valid url."))]
         [Display(Name = "Twitter")]
         public string Twitter { get; set; }
 
+        [RegularExpression("^[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]‌​{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$", ErrorMessage = "You must enter a valid url."))]
         [Display(Name = "Facebook")]
         public string Facebook { get; set; }
 
+        [RegularExpression("^[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]‌​{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$", ErrorMessage = "You must enter a valid url."))]
         [Display(Name = "Blog")]
         public string Blog { get; set; }
 
+        [RegularExpression("^[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]‌​{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$", ErrorMessage = "You must enter a valid url."))]
         [Display(Name = "Website")]
         public string Website { get; set; }
 
-        [Display(Name = "Title")]
+        [Display(Name = "Job Title")]
         public string Title { get; set; }
 
         [Display(Name = "Profession")]
