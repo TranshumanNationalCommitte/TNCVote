@@ -22,5 +22,26 @@ namespace TNCVote
             BundleConfig.RegisterBundles(BundleTable.Bundles);
            // Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
+        
+        void Application_Error(Object sender, EventArgs e) 
+        { 
+            var exception = Server.GetLastError();
+            /*
+            if (exception == null)
+                return;
+            var mail = new MailMessage { From = new MailAddress("automated@contoso.com") };
+            mail.To.Add(new MailAddress("administrator@contoso.com"));
+            mail.Subject = "Site Error at " + DateTime.Now;
+            mail.Body = "Error Description: " + exception.Message;
+            var server = new SmtpClient { Host = "your.smtp.server" };
+            server.Send(mail);
+        
+            // Clear the error
+            Server.ClearError();
+        
+            // Redirect to a landing page
+            Response.Redirect("home/landing");
+            */
+      }
     }
 }
