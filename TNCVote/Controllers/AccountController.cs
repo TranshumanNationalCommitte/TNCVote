@@ -230,8 +230,16 @@ namespace TNCVote.Controllers
 
             MailMessage mm = new MailMessage("donotreply@domain.com", "sendtomyemail@domain.co.uk");
             mm.Subject = "Email Subject";
-            mm.Body = "Email Body";
-
+            mm.Body = @"<h2>Thank you for joining the TNC</h2>
+< h4 > As a member you will be able to vote and help the TNC develop policies, platform and agenda items and particupate in the TNC organization.Look for email from the TNC and in the mean time check us out here and get involved: </ h4 >
+  < br /> &nbsp;< br />
+   < address >
+       < strong > On Facebook:</ strong >   < br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;< a href = 'https://www.facebook.com/groups/TNCTP/' target = '_blank' > On Facebook </ a >< br /> &nbsp;< br />
+                              < strong > Email:</ strong > < br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;< a href = 'mailto:admin@transhumanity.net?Subject=TNCMemberPortal' target = '_blank' > via email at admin @transhumanity.net </ a >< br /> &nbsp;< br />
+                                                      < strong > Our Website:</ strong > < br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;< a href = 'http://www.TranshumanPolitics.com/' target = '_blank' > www.TranshumanPolitics.com </ a >< br /> &nbsp;< br />
+                                                                             < strong > Public Document Archive:</ strong > < br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;< a href = 'http://wiki.TranshumanPolitics.com/' target = '_blank' > wiki.TranshumanPolitics.com </ a >< br /> &nbsp;< br />
+                                                                                                </ address > ";
+            mm.IsBodyHtml = true;
             client.Send(mm);
 
         }
