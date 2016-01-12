@@ -11,6 +11,8 @@ using Microsoft.Owin.Security;
 using TNCVote.Models;
 using System.Collections.Generic;
 using System.Net.Mail;
+using Recaptcha.Web;
+using Recaptcha.Web.Mvc;
 
 namespace TNCVote.Controllers
 {
@@ -251,6 +253,18 @@ namespace TNCVote.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
+            if (String.IsNullOrEmpty(recaptchaHelper.Response))
+            {
+                ModelState.AddModelError("", "Captcha answer cannot be empty.");
+                return View(model);
+            }
+            RecaptchaVerificationResult recaptchaResult = await recaptchaHelper.VerifyRecaptchaResponseTaskAsync();
+            if (recaptchaResult != RecaptchaVerificationResult.Success)
+            {
+                ModelState.AddModelError("", "Incorrect captcha answer.");
+            }
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
