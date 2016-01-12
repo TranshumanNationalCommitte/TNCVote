@@ -34,6 +34,10 @@ Setup Instructions:
 	client.Port = [port number]
 	client.Credentials = new System.Net.NetworkCredential([from email], [password]);
 
-6. Remove any refernece to
+6. Remove any refernece to the TNC
+
+7. Configure the database: 
+
+http://www.entityframeworktutorial.net/code-first/code-based-migration-in-code-first.aspx
 
 SMTP Email Configuration:
