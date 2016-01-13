@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using TNCVote.Models;
 using System.Collections.Generic;
 using System.Net.Mail;
+using reCaptcha;
 using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
 
@@ -249,6 +250,7 @@ namespace TNCVote.Controllers
             }
             catch(Exception E)
             {
+                throw (E);
                 // not sure if we care... 
             }
         }
