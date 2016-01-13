@@ -14,6 +14,8 @@ using System.Net.Mail;
 using reCaptcha;
 using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
+using System.Net; 
+using SendGrid;
 
 namespace TNCVote.Controllers
 {
@@ -223,32 +225,60 @@ namespace TNCVote.Controllers
         public void SendConfirmationEmail(String NewMemberEmailAccount)
         {
             try
-            {
-                SmtpClient client = new SmtpClient();
-                client.Port = 465;
-                client.Host = "mail.TranshumanPolitics.com";
-                client.EnableSsl = true;
-                client.Timeout = 10000;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = false;
-                client.Credentials = new System.Net.NetworkCredential("donotreply@transhumanpolitics.com ", "1SuperSecret!");
+            { 
+                SendGridMessage myMessage = new SendGridMessage();
 
-                //MailMessage mm = new MailMessage("donotreply@transhumanpolitics.com ", NewMemberEmailAccount);
-                MailMessage mm = new MailMessage("donotreply@transhumanpolitics.com ", "pieseczek@hotmail.com");
-                mm.Subject = "Welcome New Registered TNC Member";
-                mm.Body = @"<h2>Thank you for joining the TNC</h2>
-< h4 > As a member you will be able to vote and help the TNC develop policies, platform and agenda items and particupate in the TNC organization.Look for email from the TNC and in the mean time check us out here and get involved: </ h4 >
-  < br /> &nbsp;< br />
-   < address >
-       < strong > On Facebook:</ strong >   < br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;< a href = 'https://www.facebook.com/groups/TNCTP/' target = '_blank' > On Facebook </ a >< br /> &nbsp;< br />
-                              < strong > Email:</ strong > < br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;< a href = 'mailto:admin@transhumanity.net?Subject=TNCMemberPortal' target = '_blank' > via email at admin @transhumanity.net </ a >< br /> &nbsp;< br />
-                                                      < strong > Our Website:</ strong > < br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;< a href = 'http://www.TranshumanPolitics.com/' target = '_blank' > www.TranshumanPolitics.com </ a >< br /> &nbsp;< br />
-                                                                             < strong > Public Document Archive:</ strong > < br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;< a href = 'http://wiki.TranshumanPolitics.com/' target = '_blank' > wiki.TranshumanPolitics.com </ a >< br /> &nbsp;< br />
-                                                                                                </ address > ";
-                mm.IsBodyHtml = true;
-                client.Send(mm);
+                // Add the message properties.
+                myMessage.From = new MailAddress("donotreply@transhumanpolitics.com");
+
+                // Add multiple addresses to the To field.
+                List<String> recipients = new List<String>
+                { 
+                    NewMemberEmailAccount
+                };
+
+                myMessage.AddTo("pieseczek@hotmail.com");
+
+                myMessage.Subject = "Welcome New Registered TNC Member";
+
+                //Add the HTML and Text bodies
+                myMessage.Html = @"<h2>Thank you for joining the TNC</h2>
+<h4 > As a member you will be able to vote and help the TNC develop policies, platform and agenda items and particupate in the TNC organization.Look for email from the TNC and in the mean time check us out here and get involved: </h4>
+<br /> &nbsp;<br />
+<address >
+<strong > On Facebook:</strong >   < br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href='https://www.facebook.com/groups/TNCTP/' target='_blank' > On Facebook </a><br /> &nbsp;<br />
+<strong > Email:</strong > <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href='mailto:admin@transhumanity.net?Subject=TNCMemberPortal' target='_blank' > via email at admin@transhumanpolitics.com </a><br/> &nbsp;<br />
+<strong > Our Website:</strong > < br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href = 'http://www.TranshumanPolitics.com/' target='_blank' > www.TranshumanPolitics.com </a><br /> &nbsp;<br />
+<strong > Public Document Archive:</strong><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href = 'http://wiki.TranshumanPolitics.com/' target='_blank' > wiki.TranshumanPolitics.com </a><br /> &nbsp;<br />
+</address>
+
+Again thank you.<br />
+@DavidJKelley, Interim Chairman - TNC";
+
+
+                // Create an Web transport for sending email.
+                Web transportWeb = new Web(new NetworkCredential("[username]", "[password]"));
+
+                // Send the email, which returns an awaitable task.
+                transportWeb.DeliverAsync(myMessage);
+
+
+                //SmtpClient client = new SmtpClient();
+                //client.Port = 465;
+                //client.Host = "mail.TranshumanPolitics.com";
+                //client.EnableSsl = true;
+                //client.Timeout = 10000;
+                //client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                //client.UseDefaultCredentials = false;
+                //client.Credentials = new System.Net.NetworkCredential("donotreply@transhumanpolitics.com", "[PASSWORD]");
+
+                //MailMessage mm = new MailMessage("donotreply@transhumanpolitics.com ", NewMemberEmailAccount); 
+                //mm.Subject = "Welcome New Registered TNC Member";
+                //mm.Body = @"";
+                //mm.IsBodyHtml = true;
+                //client.Send(mm);
             }
-            catch(Exception E)
+            catch(Exception)
             {
                 //throw (E);
                 // not sure if we care... 
