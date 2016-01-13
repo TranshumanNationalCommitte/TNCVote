@@ -250,7 +250,7 @@ namespace TNCVote.Controllers
             }
             catch(Exception E)
             {
-                throw (E);
+                //throw (E);
                 // not sure if we care... 
             }
         }
