@@ -51,24 +51,22 @@ namespace TNCVote.Models
 
         [Display(Name = "Married")]
         public string Married { get; set; }
-
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]
+         
         [Display(Name = "Phone Number")]
         public override string PhoneNumber { get; set; }
 
-       [Url]
+       
         [Display(Name = "Twitter")]
         public string Twitter { get; set; }
-
-        [Url]
+ 
         [Display(Name = "Facebook")]
         public string Facebook { get; set; }
 
-        [Url]
+       
         [Display(Name = "Blog")]
         public string Blog { get; set; }
 
-        [Url]
+   
         [Display(Name = "Website")]
         public string Website { get; set; }
 

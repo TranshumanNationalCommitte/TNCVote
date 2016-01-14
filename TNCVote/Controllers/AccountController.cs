@@ -63,7 +63,6 @@ namespace TNCVote.Controllers
             }
         }
 
-        //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -251,7 +250,7 @@ namespace TNCVote.Controllers
 <br /> &nbsp;<br />
 <address >
 <strong > On Facebook:</strong >   < br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href='https://www.facebook.com/groups/TNCTP/' target='_blank' > On Facebook </a><br /> &nbsp;<br />
-<strong > Email:</strong > <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href='mailto:admin@transhumanity.net?Subject=TNCMemberPortal' target='_blank' > via email at admin@transhumanpolitics.com </a><br/> &nbsp;<br />
+<strong > Email:</strong > <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href='mailto:admin@transhumanpolitics.com?Subject=TNCMemberPortal' target='_blank' >admin@transhumanpolitics.com </a><br/> &nbsp;<br />
 <strong > Our Website:</strong > < br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href = 'http://www.TranshumanPolitics.com/' target='_blank' > www.TranshumanPolitics.com </a><br /> &nbsp;<br />
 <strong > Public Document Archive:</strong><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href = 'http://wiki.TranshumanPolitics.com/' target='_blank' > wiki.TranshumanPolitics.com </a><br /> &nbsp;<br />
 </address>
@@ -262,10 +261,12 @@ Again thank you.<br />
 
                 // Create an Web transport for sending email.
                 Web transportWeb = new Web(new NetworkCredential("[username]", "[password]"));
-
+                 
+                
                 // Send the email, which returns an awaitable task.
-                transportWeb.DeliverAsync(myMessage);
+                //Task temp = await transportWeb.DeliverAsync(myMessage);
 
+                transportWeb.DeliverAsync(myMessage); 
 
                 //SmtpClient client = new SmtpClient();
                 //client.Port = 465;
@@ -282,7 +283,7 @@ Again thank you.<br />
                 //mm.IsBodyHtml = true;
                 //client.Send(mm);
             }
-            catch(Exception)
+            catch(Exception E)
             {
                 //throw (E);
                 // not sure if we care... 
@@ -306,7 +307,7 @@ Again thank you.<br />
             if (recaptchaResult != RecaptchaVerificationResult.Success)
             {
                 ModelState.AddModelError("", "Incorrect captcha answer.");
-            }
+            } 
 
             if (ModelState.IsValid)
             {
@@ -336,24 +337,23 @@ Again thank you.<br />
                 };
                 try
                 {
-                    var result = await UserManager.CreateAsync(user, model.Password);
-                   
-                 
-                if (result.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                    
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                        SendConfirmationEmail(model.Email);
+                            SendConfirmationEmail(model.Email);
 
-                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                        // Send an email with this link
-                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                            // Send an email with this link
+                            // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                            // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                            // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                        return RedirectToAction("Success", "Home");
-                    }
-                    AddErrors(result);
+                            return RedirectToAction("Success", "Home");
+                        }
+                        AddErrors(result);
                    
                 }
                 catch (DbEntityValidationException dbEx)
@@ -362,10 +362,7 @@ Again thank you.<br />
                     {
                         foreach (var validationError in validationErrors.ValidationErrors)
                         {
-                            ModelState.AddModelError("", validationError.ErrorMessage);
-                          
-                           
-                          
+                            ModelState.AddModelError("", validationError.ErrorMessage); 
                         }
                     }
                 }
