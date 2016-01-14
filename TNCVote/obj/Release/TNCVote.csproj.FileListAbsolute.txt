@@ -67,9 +67,9 @@ C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\bin\Microsoft.Owin.Security.Micr
 C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.csprojResolveAssemblyReference.cache
 C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.dll
 C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.pdb
-C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.Migrations.InitialCreate.resources
-C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.csproj.GenerateResource.Cache
-C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.Migrations.RequiredFields.resources
-C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.Migrations.DateOfBirth.resources
-C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.Migrations.cleanup.resources
-C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\obj\Release\TNCVote.Migrations.AddedFieldstoApplicationUser.resources
+C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\bin\JetBrains.Annotations.dll
+C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\bin\reCaptcha.dll
+C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\bin\Recaptcha.Web.dll
+C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\bin\WebActivatorEx.dll
+C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\bin\JetBrains.Annotations.xml
+C:\Users\Kevin\Documents\GitHub\TNCVote\TNCVote\bin\reCaptcha.pdb

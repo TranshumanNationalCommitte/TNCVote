@@ -1,4 +1,8 @@
 ﻿@model TNCVote.Models.RegisterViewModel
+
+@using Recaptcha.Web.Mvc;
+
+
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_PageOnlyLayout.cshtml";
@@ -29,32 +33,42 @@
                 @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
             </div>
         </div>
-       
-        <div class="form-group">
-            @Html.LabelFor(m => m.Country, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(m=> m.Country, ViewBag.CountryList as SelectList)
-                @*@Html.TextBoxFor(m => m.Country, new { @class = "form-control" })*@
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.PostalCode, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
-            </div>
-        </div> 
         <div class="form-group">
             @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
             </div>
         </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Country, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m=> m.Country, ViewBag.CountryList as SelectList,null,  new { @class = "form-control" })
+                @*@Html.TextBoxFor(m => m.Country, new { @class = "form-control" })*@
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Birth Day", new { @class = "col-md-2 control-label" })
+            <div class="col-md-2">
+                @Html.DropDownListFor(m => m.BirthMonth, ViewBag.MonthNameList as SelectList,"", new { @class = "form-control" })
+            
+               
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.BirthDay, new { @class = "form-control", @size = 2, @maxlength = 2,@placeholder ="DD" })
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.BirthYear, new { @class = "form-control", @size = 4, @maxlength = 4, @placeholder = "YYYY" })
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.PostalCode, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+            </div>
+        </div>
+  
         <div class="form-group">
             @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
@@ -67,18 +81,22 @@
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
             </div>
         </div>
+    
+       
     </div>
     <div class="form-element multi-field birthday" id="birthday-form-element">
         <fieldset>
             <legend><strong id="BirthdayLabel">Additional Demographic and Voter Information</strong></legend>
             <h4>Following fields help with voter demographics and help with certain local or regional political issues etc.  They are not required but help in demographic analysis of TNC members.</h4>
         </fieldset>
+
         <div class="form-group">
             @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
             </div>
         </div>
+   
         <div class="form-group">
             @Html.LabelFor(m => m.County, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
@@ -88,13 +106,13 @@
         <div class="form-group">
             @Html.LabelFor(m => m.Sex, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Sex, new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.Sex, ViewBag.GenderList as SelectList,"", new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.IncomeRange, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.IncomeRange, new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.IncomeRange, ViewBag.IncomeRangeList as SelectList,"", new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
@@ -106,7 +124,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.Married, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Married, new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.Married, ViewBag.MarriedList as SelectList,"", new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
@@ -151,6 +169,14 @@
                 @Html.TextBoxFor(m => m.Profession, new { @class = "form-control" })
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-md-2">
+            </div>
+                <div class="col-md-10">
+                    @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean);
+                </div>
+            </div>
+       
     </div>
 
     <div class="form-group">
