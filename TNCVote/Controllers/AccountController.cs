@@ -14,6 +14,8 @@ using System.Net.Mail;
 using reCaptcha;
 using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 namespace TNCVote.Controllers
 {
@@ -300,22 +302,41 @@ namespace TNCVote.Controllers
                     Title = model.Title,
                     Profession = model.Profession
                 };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                try
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    SendConfirmationEmail(model.Email);
+                        SendConfirmationEmail(model.Email);
 
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Success", "Home");
+                        return RedirectToAction("Success", "Home");
+                    }
+                    AddErrors(result);
+                   
                 }
-                AddErrors(result);
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            ModelState.AddModelError("", validationError.ErrorMessage);
+                          
+                           
+                          
+                        }
+                    }
+                }
+              
+               
             }
 
             CreateSelectData();
