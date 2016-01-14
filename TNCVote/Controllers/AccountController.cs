@@ -304,6 +304,11 @@ Again thank you.<br />
                 ModelState.AddModelError("", "Incorrect captcha answer.");
             }
 
+            if (model.Facebook.IndexOf("http") == -1)
+            {
+                model.Facebook = null;
+            }
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
@@ -330,7 +335,15 @@ Again thank you.<br />
                     Title = model.Title,
                     Profession = model.Profession
                 };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                IdentityResult result = null;
+                try
+                {
+                    result = await UserManager.CreateAsync(user, model.Password);
+                }
+                catch (Exception E)
+                {
+
+                }
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);

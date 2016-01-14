@@ -40,4 +40,11 @@ Setup Instructions:
 
 http://www.entityframeworktutorial.net/code-first/code-based-migration-in-code-first.aspx
 
-SMTP Email Configuration:
+8. Configure reCAPTCHA, you will need a site key and secret key here: 
+
+https://www.google.com/recaptcha/intro/index.html
+
+for example in web.config you need to udpate these: 
+
+    <add key="reCaptchaPublicKey" value="6LdtGBUTAAAAAPc7xMZx8SlUZDxBuX1gvy5PNyb1" />
+    <add key="reCaptchaPrivateKey" value="6LdtGBUTAAAAAPMxn8vrUxXszNeKsY1J3Vm8buWb" />
