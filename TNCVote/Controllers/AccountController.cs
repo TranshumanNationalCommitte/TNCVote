@@ -179,7 +179,7 @@ namespace TNCVote.Controllers
             ViewBag.IncomeRangeList = incomeRangeList;
             SelectList genderList = new SelectList(genders, "ID", "Name");
             ViewBag.GenderList = genderList;
-            var monthNames = DateTimeFormatInfo.CurrentInfo.MonthNames.Select((Name, ID) => new { ID = ID, Name = Name }).ToList();
+            var monthNames = DateTimeFormatInfo.CurrentInfo.MonthNames.Where(x=> !String.IsNullOrWhiteSpace(x)).Select((Name, ID) => new { ID = ID + 1, Name = Name }).ToList();
 
             SelectList monthNameList = new SelectList(monthNames, "ID", "Name");
             ViewBag.MonthNameList = monthNameList;
@@ -311,11 +311,12 @@ Again thank you.<br />
 
             if (ModelState.IsValid)
             {
+                var birthDate  = new DateTime(Convert.ToInt16(model.BirthYear), Convert.ToInt16(model.BirthMonth) , Convert.ToInt16(model.BirthDay)).ToShortDateString();
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    BirthDate = new DateTime(Convert.ToInt16(model.BirthYear), Convert.ToInt16(model.BirthMonth + 1), Convert.ToInt16(model.BirthDay)).ToShortDateString(),
+                    BirthDate = birthDate,
                     IPAddress = this.GetIPAddress(),
                     FirstName = model.FirstName,
                     LastName = model.LastName,
