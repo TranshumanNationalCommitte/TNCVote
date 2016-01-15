@@ -283,10 +283,9 @@ Again thank you.<br />
                 //mm.IsBodyHtml = true;
                 //client.Send(mm);
             }
-            catch(Exception E)
+            catch(Exception)
             {
-                //throw (E);
-                // not sure if we care... 
+                //throw (E); 
             }
         }
 
@@ -339,23 +338,23 @@ Again thank you.<br />
                 try
                 {
                     IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-                    
+
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                            SendConfirmationEmail(model.Email);
+                        SendConfirmationEmail(model.Email);
 
-                            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                            // Send an email with this link
-                            // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                            // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                            // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                            return RedirectToAction("Success", "Home");
-                        }
-                        AddErrors(result);
-                   
+                        return RedirectToAction("Success", "Home");
+                    }
+                    AddErrors(result);
+
                 }
                 catch (DbEntityValidationException dbEx)
                 {
@@ -363,10 +362,11 @@ Again thank you.<br />
                     {
                         foreach (var validationError in validationErrors.ValidationErrors)
                         {
-                            ModelState.AddModelError("", validationError.ErrorMessage); 
+                            ModelState.AddModelError("", validationError.ErrorMessage);
                         }
                     }
                 }
+                catch (Exception) { }
               
                
             }
