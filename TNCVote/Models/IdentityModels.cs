@@ -22,6 +22,7 @@ namespace TNCVote.Models
         [Display(Name = "Date of Birth")]
         public string BirthDate { get; set; }
 
+        [RegularExpression(@"^\d{5}(-\d{4})?$", ErrorMessage = "Invalid Postal Code")]
         [Required]
         [Display(Name = "Postal Code")]
         public string PostalCode { get; set; }
