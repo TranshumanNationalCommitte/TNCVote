@@ -170,6 +170,7 @@ namespace TNCVote.Controllers
             {
                  new { Name="Married", ID="M"},
                  new { Name="Single", ID="S"},
+                 new { Name="Other", ID="O"}
                };
 
             SelectList marriedList = new SelectList(married, "ID", "Name");
