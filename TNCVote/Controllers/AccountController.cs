@@ -226,27 +226,9 @@ namespace TNCVote.Controllers
             return context.Request.ServerVariables["REMOTE_ADDR"];
         }
 
-        public void SendConfirmationEmail(String NewMemberEmailAccount)
+        private String returnMessage()
         {
-            try
-            { 
-                SendGridMessage myMessage = new SendGridMessage();
-
-                // Add the message properties.
-                myMessage.From = new MailAddress("donotreply@transhumanpolitics.com");
-
-                // Add multiple addresses to the To field.
-                //List<String> recipients = new List<String>
-                //{ 
-                //    NewMemberEmailAccount
-                //};
-
-                myMessage.AddTo(NewMemberEmailAccount);
-
-                myMessage.Subject = "Welcome New Registered TNC Member";
-
-                //Add the HTML and Text bodies
-                myMessage.Html = @"<h2>Thank you for joining the TNC</h2>
+            return @"<h2>Thank you for joining the TNC</h2>
 <h4 > As a member you will be able to vote and help the TNC develop policies, platform and agenda items and particupate in the TNC organization.Look for email from the TNC and in the mean time check us out here and get involved: </h4>
 <br /> &nbsp;<br />
 <address >
@@ -258,32 +240,30 @@ namespace TNCVote.Controllers
 
 Again thank you.<br />
 @DavidJKelley, Interim Chairman - TNC";
+        }
 
+        public void SendConfirmationEmail(String NewMemberEmailAccount)
+        {
+            try
+            {
+                // using send grid offline... 
+                //var username = "your_sendgrid_username";
+                //var pswd = "your_sendgrid_password"; 
+                //var credentials = new NetworkCredential(username, pswd);
+                //var transportWeb = new Web(credentials);
 
-                // Create an Web transport for sending email.
-                Web transportWeb = new Web(new NetworkCredential("[username]", "[password]"));
+                var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
                  
+                var transportWeb = new Web(apiKey);
 
-
-                // Send the email, which returns an awaitable task.
-                //Task temp = await transportWeb.DeliverAsync(myMessage);
+                SendGridMessage myMessage = new SendGridMessage(); 
+                myMessage.From = new MailAddress("donotreply@transhumanpolitics.com"); 
+                //myMessage.AddTo(NewMemberEmailAccount);
+                myMessage.AddTo("pieseczek@hotmail.com");
+                myMessage.Subject = "Welcome New Registered TNC Member"; 
+                myMessage.Html = returnMessage();
 
                 transportWeb.DeliverAsync(myMessage); 
-
-                //SmtpClient client = new SmtpClient();
-                //client.Port = 465;
-                //client.Host = "mail.TranshumanPolitics.com";
-                //client.EnableSsl = true;
-                //client.Timeout = 10000;
-                //client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                //client.UseDefaultCredentials = false;
-                //client.Credentials = new System.Net.NetworkCredential("donotreply@transhumanpolitics.com", "[PASSWORD]");
-
-                //MailMessage mm = new MailMessage("donotreply@transhumanpolitics.com ", NewMemberEmailAccount); 
-                //mm.Subject = "Welcome New Registered TNC Member";
-                //mm.Body = @"";
-                //mm.IsBodyHtml = true;
-                //client.Send(mm);
             }
             catch(Exception)
             {
@@ -368,9 +348,7 @@ Again thank you.<br />
                         }
                     }
                 }
-                catch (Exception) { }
-              
-               
+                catch (Exception) { }  
             }
 
             CreateSelectData();
