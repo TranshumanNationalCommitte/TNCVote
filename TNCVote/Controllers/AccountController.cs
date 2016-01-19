@@ -158,7 +158,7 @@ namespace TNCVote.Controllers
 
             var incomeRanges = new List<object>()
             {
-                 new { Name="<$25,000", ID="1"},
+                 new { Name="<$25,000", ID="0"},
                  new { Name="$25,00-$50,000", ID="1"},
                   new { Name="$50,000-$75,000", ID="3"},
                    new { Name="$75,000-$100,000", ID="4"},
@@ -236,12 +236,12 @@ namespace TNCVote.Controllers
                 myMessage.From = new MailAddress("donotreply@transhumanpolitics.com");
 
                 // Add multiple addresses to the To field.
-                List<String> recipients = new List<String>
-                { 
-                    NewMemberEmailAccount
-                };
+                //List<String> recipients = new List<String>
+                //{ 
+                //    NewMemberEmailAccount
+                //};
 
-                myMessage.AddTo("pieseczek@hotmail.com");
+                myMessage.AddTo(NewMemberEmailAccount);
 
                 myMessage.Subject = "Welcome New Registered TNC Member";
 
@@ -263,7 +263,8 @@ Again thank you.<br />
                 // Create an Web transport for sending email.
                 Web transportWeb = new Web(new NetworkCredential("[username]", "[password]"));
                  
-                
+
+
                 // Send the email, which returns an awaitable task.
                 //Task temp = await transportWeb.DeliverAsync(myMessage);
 
