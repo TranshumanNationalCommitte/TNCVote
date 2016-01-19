@@ -17,15 +17,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="http://www.TranshumanPolitics.com/" style="color:white;">TNC Home Page</a></li> 
+                    @Html.Partial("_LoginPartial")
                 </ul> 
-            </div>
+            </div> 
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Transhuman National Committee</p>
+            <p>&copy; @DateTime.Now.Year - Transhuman National Committee | <a href="/Home/Legal" >Legal</a></p>
         </footer>
     </div>
 
