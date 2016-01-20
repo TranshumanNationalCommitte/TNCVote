@@ -278,6 +278,7 @@ Again thank you.<br />
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            CreateSelectData();
             RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
             if (String.IsNullOrEmpty(recaptchaHelper.Response))
             {
@@ -350,9 +351,6 @@ Again thank you.<br />
                 }
                 catch (Exception) { }  
             }
-
-            CreateSelectData();
-
             // If we got this far, something failed, redisplay form
             return View(model);
         }
