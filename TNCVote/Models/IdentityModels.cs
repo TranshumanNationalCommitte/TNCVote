@@ -17,11 +17,10 @@ namespace TNCVote.Models
         [Required]
         public string BirthDate { get; set; }
         [Required]
-        public string PostalCode { get; set; }
-        [Required]
         public string CitizenshipCountry { get; set; }
         [EmailAddress]
         public override string Email { get; set; }
+        public string PostalCode { get; set; }
         public string City { get; set; }
         public string County { get; set; }
         public string Sex { get; set; }
