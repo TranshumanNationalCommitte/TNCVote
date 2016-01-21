@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -11,13 +10,10 @@ using Microsoft.Owin.Security;
 using TNCVote.Models;
 using System.Collections.Generic;
 using System.Net.Mail;
-using reCaptcha;
 using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
-using System.Net; 
 using SendGrid;
 using System.Data.Entity.Validation;
-using System.Diagnostics;
 
 
 
@@ -265,9 +261,9 @@ Again thank you.<br />
 
                 transportWeb.DeliverAsync(myMessage); 
             }
-            catch(Exception)
+            catch(Exception e)
             {
-                throw E;
+                throw e;
                 //throw (E); 
             }
         }
