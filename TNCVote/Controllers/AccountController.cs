@@ -265,9 +265,9 @@ Again thank you.<br />
 
                 transportWeb.DeliverAsync(myMessage); 
             }
-            catch(Exception)
+            catch(Exception e)
             {
-                throw E;
+                throw e;
                 //throw (E); 
             }
         }
