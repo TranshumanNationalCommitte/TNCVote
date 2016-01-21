@@ -285,6 +285,7 @@ Again thank you.<br />
             }
             catch(Exception E)
             {
+                throw E;
                 //throw (E);
                 // not sure if we care... 
             }
@@ -297,6 +298,7 @@ Again thank you.<br />
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            CreateSelectData();
             RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
             if (String.IsNullOrEmpty(recaptchaHelper.Response))
             {
@@ -309,6 +311,11 @@ Again thank you.<br />
                 ModelState.AddModelError("", "Incorrect captcha answer.");
             } 
 
+            if(!ValidateDayInMonth.IsValid(model.BirthYear, model.BirthMonth, model.BirthDay))
+            {
+                ModelState.AddModelError("", "You entered a birth day that is not in the month.");
+            }       
+            
             if (ModelState.IsValid)
             {
                 var birthDate  = new DateTime(Convert.ToInt16(model.BirthYear), Convert.ToInt16(model.BirthMonth) , Convert.ToInt16(model.BirthDay)).ToShortDateString();
@@ -336,6 +343,7 @@ Again thank you.<br />
                     Title = model.Title,
                     Profession = model.Profession
                 };
+          
                 try
                 {
                     IdentityResult result = await UserManager.CreateAsync(user, model.Password);
@@ -371,7 +379,7 @@ Again thank you.<br />
                
             }
 
-            CreateSelectData();
+           
 
             // If we got this far, something failed, redisplay form
             return View(model);
