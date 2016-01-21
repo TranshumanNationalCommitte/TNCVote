@@ -158,7 +158,7 @@ namespace TNCVote.Controllers
 
             var incomeRanges = new List<object>()
             {
-                 new { Name="<$25,000", ID="1"},
+                 new { Name="<$25,000", ID="0"},
                  new { Name="$25,00-$50,000", ID="1"},
                   new { Name="$50,000-$75,000", ID="3"},
                    new { Name="$75,000-$100,000", ID="4"},
@@ -170,6 +170,7 @@ namespace TNCVote.Controllers
             {
                  new { Name="Married", ID="M"},
                  new { Name="Single", ID="S"},
+                 new { Name="Other", ID="O"}
                };
 
             SelectList marriedList = new SelectList(married, "ID", "Name");
@@ -225,27 +226,9 @@ namespace TNCVote.Controllers
             return context.Request.ServerVariables["REMOTE_ADDR"];
         }
 
-        public void SendConfirmationEmail(String NewMemberEmailAccount)
+        private String returnMessage()
         {
-            try
-            { 
-                SendGridMessage myMessage = new SendGridMessage();
-
-                // Add the message properties.
-                myMessage.From = new MailAddress("donotreply@transhumanpolitics.com");
-
-                // Add multiple addresses to the To field.
-                List<String> recipients = new List<String>
-                { 
-                    NewMemberEmailAccount
-                };
-
-                myMessage.AddTo("pieseczek@hotmail.com");
-
-                myMessage.Subject = "Welcome New Registered TNC Member";
-
-                //Add the HTML and Text bodies
-                myMessage.Html = @"<h2>Thank you for joining the TNC</h2>
+            return @"<h2>Thank you for joining the TNC</h2>
 <h4 > As a member you will be able to vote and help the TNC develop policies, platform and agenda items and particupate in the TNC organization.Look for email from the TNC and in the mean time check us out here and get involved: </h4>
 <br /> &nbsp;<br />
 <address >
@@ -257,37 +240,35 @@ namespace TNCVote.Controllers
 
 Again thank you.<br />
 @DavidJKelley, Interim Chairman - TNC";
+        }
 
+        public void SendConfirmationEmail(String NewMemberEmailAccount)
+        {
+            try
+            {
+                // using send grid offline... 
+                //var username = "your_sendgrid_username";
+                //var pswd = "your_sendgrid_password"; 
+                //var credentials = new NetworkCredential(username, pswd);
+                //var transportWeb = new Web(credentials);
 
-                // Create an Web transport for sending email.
-                Web transportWeb = new Web(new NetworkCredential("[username]", "[password]"));
+                var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
                  
-                
-                // Send the email, which returns an awaitable task.
-                //Task temp = await transportWeb.DeliverAsync(myMessage);
+                var transportWeb = new Web(apiKey);
+
+                SendGridMessage myMessage = new SendGridMessage(); 
+                myMessage.From = new MailAddress("donotreply@transhumanpolitics.com"); 
+                //myMessage.AddTo(NewMemberEmailAccount);
+                myMessage.AddTo("pieseczek@hotmail.com");
+                myMessage.Subject = "Welcome New Registered TNC Member"; 
+                myMessage.Html = returnMessage();
 
                 transportWeb.DeliverAsync(myMessage); 
-
-                //SmtpClient client = new SmtpClient();
-                //client.Port = 465;
-                //client.Host = "mail.TranshumanPolitics.com";
-                //client.EnableSsl = true;
-                //client.Timeout = 10000;
-                //client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                //client.UseDefaultCredentials = false;
-                //client.Credentials = new System.Net.NetworkCredential("donotreply@transhumanpolitics.com", "[PASSWORD]");
-
-                //MailMessage mm = new MailMessage("donotreply@transhumanpolitics.com ", NewMemberEmailAccount); 
-                //mm.Subject = "Welcome New Registered TNC Member";
-                //mm.Body = @"";
-                //mm.IsBodyHtml = true;
-                //client.Send(mm);
             }
-            catch(Exception E)
+            catch(Exception)
             {
                 throw E;
-                //throw (E);
-                // not sure if we care... 
+                //throw (E); 
             }
         }
 
@@ -347,23 +328,23 @@ Again thank you.<br />
                 try
                 {
                     IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-                    
+
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                            SendConfirmationEmail(model.Email);
+                        SendConfirmationEmail(model.Email);
 
-                            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                            // Send an email with this link
-                            // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                            // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                            // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                            return RedirectToAction("Success", "Home");
-                        }
-                        AddErrors(result);
-                   
+                        return RedirectToAction("Success", "Home");
+                    }
+                    AddErrors(result);
+
                 }
                 catch (DbEntityValidationException dbEx)
                 {
@@ -371,10 +352,11 @@ Again thank you.<br />
                     {
                         foreach (var validationError in validationErrors.ValidationErrors)
                         {
-                            ModelState.AddModelError("", validationError.ErrorMessage); 
+                            ModelState.AddModelError("", validationError.ErrorMessage);
                         }
                     }
                 }
+                catch (Exception) { }  
               
                
             }
