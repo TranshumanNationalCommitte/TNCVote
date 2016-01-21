@@ -84,18 +84,21 @@ namespace TNCVote.Models
 
   
 
-    public class ValidateDayInMonthAttribute : ValidationAttribute
+    public static class ValidateDayInMonth
     {
-        public override bool IsValid(object value)
+        public static bool IsValid(int birthYear, int birthMonth, int birthDay)
         {
             bool flag = false;
-            RegisterViewModel obj = (RegisterViewModel)value;
-            if (obj.BirthDay > 0 && obj.BirthDay <= DateTime.DaysInMonth(obj.BirthYear, obj.BirthMonth) )
+            if (birthDay > 0 && birthDay <= DateTime.DaysInMonth(birthYear,birthMonth))
             {
                 flag = true;
             }
             return flag;
+
+
         }
+
+      
     }
 
 
@@ -113,21 +116,15 @@ namespace TNCVote.Models
 
        
         [Required]
-        [StringLength(40, ErrorMessage = "Last name too long. Please shorten.")]
+        [StringLength(50, ErrorMessage = "Last name too long. Please shorten.")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Required]
-        [RegularExpression(@"^\d{5}(-\d{4})?$", ErrorMessage = "Invalid Postal Code")]
-        [Display(Name = "Postal Code")]
-        public string PostalCode { get; set; }
-         
         [Required]
         [Display(Name = "Citizenship Country")]
         public string Country { get; set; }
 
         [Range(1, 31, ErrorMessage = "Please enter valid birth day.")]
-        [ValidateDayInMonth(ErrorMessage = "Day not in inputed. Please enter a day in the month.")]
         [Required]
         [Display(Name = "Birth Day")]
         public int BirthDay { get; set; }
@@ -165,6 +162,10 @@ namespace TNCVote.Models
         [MaxLength(10, ErrorMessage = "Please select a valid county.")]
         [Display(Name = "County of Residence")]
         public string County { get; set; }
+
+        [RegularExpression(@"^\d{5}(-\d{4})?$", ErrorMessage = "Invalid Postal Code")]
+        [Display(Name = "Postal Code")]
+        public string PostalCode { get; set; }
 
         [MaxLength(10, ErrorMessage = "Please select a valid sex.")]
         [Display(Name = "Sex")]
