@@ -2,7 +2,14 @@
 @{
     ViewBag.Title = "Thank you for joining the TNC";
     Layout = "~/Views/Shared/_PageOnlyLayout.cshtml";
-}
+
+    if (!(Request.IsAuthenticated))
+    {
+        Response.Redirect("/Account/Login"); 
+    }
+} 
+
+
 <h2>Thank you for joining the TNC</h2>
 
 <h4>As a member you will be able to vote and help the TNC develop policies, platform and agenda items and particupate in the TNC organization.  Look for email from the TNC and in the mean time check us out here and get involved: </h4>

@@ -1,35 +1,29 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_PageOnlyLayout.cshtml";
+
+    if (!(Request.IsAuthenticated))
+    {
+        Response.Redirect("/Account/Login");
+    }
 }
+<h2>Welcome back to the TNC</h2>
 
-<div class="jumbotron">
-    <h1>Transhuman National Committee</h1>
-    <p class="lead"> The Transhuman National Committee of the United States is a PAC focused on Transhumanism in politics in the United States with a long term goal of creating a political party. The intent is to create the governing body of the Transhuman in politics in the United States. Help us work together and get people engaged and excited about creating the TNC. </p>
-    <p>@Html.ActionLink("Sign Up", "Register","Account",null, new { @class= "btn btn-primary btn-lg" })</p>
+<h4>As a member you will be able to vote and help the TNC develop policies, platform and agenda items and particupate in the TNC organization.  Look for email from the TNC and in the mean time check us out here and get involved: </h4>
 
-  
- 
-   
-</div>
+<br />&nbsp;<br />
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<table border="0">
+    <tr>
+        <td valign="top">
+            <address>
+                <strong>On Facebook:</strong>   <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://www.facebook.com/groups/TNCTP/' target='_blank'>On Facebook</a><br />&nbsp;<br />
+                <strong>Email:</strong> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='mailto:admin@TranshumanPolitics.com?Subject=TNCMemberPortal' target='_blank'>admin@TranshumanPolitics.com</a><br />&nbsp;<br />
+                <strong>Our Website:</strong> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.TranshumanPolitics.com/' target='_blank'>www.TranshumanPolitics.com</a><br />&nbsp;<br />
+                <strong>Public Document Archive:</strong> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://wiki.TranshumanPolitics.com/' target='_blank'>wiki.TranshumanPolitics.com</a><br />&nbsp;<br />
+            </address>
+        </td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td valign="top"><iframe width="420" height="315" src="https://www.youtube.com/embed/F5uqZGA06vE" frameborder="0" allowfullscreen></iframe></tdvalign="top">
+    </tr>
+</table>

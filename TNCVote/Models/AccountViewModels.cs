@@ -187,20 +187,18 @@ namespace TNCVote.Models
         [DataType(DataType.PhoneNumber)]
         [Phone]
         public string PhoneNumber { get; set; }
-
-        [Url]
+  
+  
         [Display(Name = "Twitter")]
         public string Twitter { get; set; }
+    
 
-        [Url]
         [Display(Name = "Facebook")]
         public string Facebook { get; set; }
 
-        [Url]
         [Display(Name = "Blog")]
         public string Blog { get; set; }
 
-        [Url]
         [Display(Name = "Website")]
         public string Website { get; set; }
 
