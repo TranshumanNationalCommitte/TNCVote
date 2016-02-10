@@ -237,6 +237,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\unanimous_full_image.png" />
     <Content Include="ReadMe.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -294,6 +296,8 @@
     <Content Include="Views\Shared\_PageOnlyLayout.cshtml" />
     <Content Include="Views\Home\Success.cshtml" />
     <Content Include="Views\Home\Legal.cshtml" />
+    <Content Include="Views\Home\SendGridTest.cshtml" />
+    <Content Include="Views\Home\Convention.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

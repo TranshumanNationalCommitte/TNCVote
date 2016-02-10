@@ -14,6 +14,7 @@
 {
     @Html.AntiForgeryToken()
     <h4>Register as a TNC Member:</h4>
+    <small>if you would like to use the site under SSL encryption click here: <a href="https://tncmembers.azurewebsites.net">SSL Version of Site</a></small>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
@@ -33,23 +34,18 @@
                 @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            </div>
-        </div>
+      
         <div class="form-group">
             @Html.LabelFor(m => m.Country, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.DropDownListFor(m=> m.Country, ViewBag.CountryList as SelectList,null,  new { @class = "form-control" })
-                @*@Html.TextBoxFor(m => m.Country, new { @class = "form-control" })*@
+                
             </div>
         </div>
         <div class="form-group">
             @Html.Label("Birth Day", new { @class = "col-md-2 control-label" })
             <div class="col-md-2">
-                @Html.DropDownListFor(m => m.BirthMonth, ViewBag.MonthNameList as SelectList,"", new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.BirthMonth, ViewBag.MonthNameList as SelectList,"", new { @class = "form-control", @placeholder = "Month" })
             
                
             </div>
@@ -62,10 +58,14 @@
 
 
         </div>
+       
+            </div>
+       
+        
         <div class="form-group">
-            @Html.LabelFor(m => m.PostalCode, new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
             </div>
         </div>
   
@@ -73,6 +73,7 @@
             @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                <br /><small>* must be at least 6 characters long additionally passwords must have at least one non letter or digit character. Passwords must have at least one digit ('0'-'9'). Passwords must have at least one uppercase ('A'-'Z'). </small>
             </div>
         </div>
         <div class="form-group">
@@ -83,7 +84,7 @@
         </div>
     
        
-    </div>
+    
     <div class="form-element multi-field birthday" id="birthday-form-element">
         <fieldset>
             <legend><strong id="BirthdayLabel">Additional Demographic and Voter Information</strong></legend>
@@ -101,6 +102,12 @@
             @Html.LabelFor(m => m.County, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.County, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.PostalCode, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
@@ -173,7 +180,7 @@
             <div class="col-md-2">
             </div>
                 <div class="col-md-10">
-                    @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean);
+                    @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean)
                 </div>
             </div>
        

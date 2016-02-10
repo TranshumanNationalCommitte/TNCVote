@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "Log in";
     Layout = "~/Views/Shared/_PageOnlyLayout.cshtml";
+
+    if (Request.IsAuthenticated)
+    {
+        Response.Redirect("/Home/Index");
+    }
+
 }
 
 <h2>@ViewBag.Title.</h2>

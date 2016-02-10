@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Convention";
+    Layout = "~/Views/Shared/_PageOnlyLayout.cshtml";
+
+    if (!(Request.IsAuthenticated))
+    {
+        Response.Redirect("/Account/Login");
+    }
+} 
+
+<br />&nbsp;<br />
+
+<h2>Welcome back to the TNC Convention 2016</h2>
+
+<h4>As a member you will be able to vote and help the TNC develop policies, platform and agenda items and particupate in the TNC organization.  Look for email from the TNC and in the mean time check us out here and get involved: </h4>
+
+<br />&nbsp;<br />
+
+<table border="0">
+    <tr>
+        <td valign="top">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/PhUpu1NCUC8" frameborder="0" allowfullscreen></iframe>
+        </td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td valign="top">
+            <strong>Start the convention UNU viewer here:</strong>
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <a href='http://unu.ai/unums/213' target='_blank'>START CONVENTION</a> ]
+            <br />&nbsp;<br />
+            Powered by: <img src="~/Images/unanimous_full_image.png" width="200" alt="Unanimous A.I." />
+        </td>
+    </tr>
+</table>
+
+
